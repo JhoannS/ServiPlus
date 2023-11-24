@@ -1,0 +1,38 @@
+<title>Registrate</title>
+<link rel="stylesheet" href="/css/login.css">
+
+<div class="container" id="container">
+    <div class="form-container sign-in">
+        <form action="/registro" method="post">
+            <h1>Crea una Cuenta</h1>
+            <p>Aqui podras gestionar tus solicitudes con mas eficacia.</p>
+            <input type="text" placeholder="Nombre" name="nombre" value="{{nombre}}">
+            <input type="text" placeholder="Aqui debes digitar 'Usuario'" name="cargo" value="{{cargo}}">
+            <input type="email" placeholder="Email" name="email" value="{{email}}">
+            <input type="password" placeholder="Contraseña" name="password">
+            <input type="password" placeholder="Confirma la contraseña" name="password2">
+            <button type="submit">Crear</button>
+        </form>
+    </div>
+    <div class="toggle-container">
+        <div class="toggle">
+            <div class="toggle-panel toggle-right">
+                <h1>¿Nos conocemos?</h1>
+                <p>Entonces ven aqui e inicia sesion</p>
+                <button class="hidden" id="login"><a href="/">Iniciar sesion</a></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="notificacion">
+    <p>{{>errores}} <i class="fa-solid fa-circle-xmark" style="color: #d10000;"></i></p>
+    <span class="notificacion_progreso"></span>
+</div>
+
+<div class="notificacion">
+    <p>{{>mensaje_incorrecto}} <i class="fa-solid fa-circle-xmark" style="color: #d10000;"></i></p>
+    <span class="notificacion_progreso"></span>
+</div>
+
+<script src="/js/login.js"></script>

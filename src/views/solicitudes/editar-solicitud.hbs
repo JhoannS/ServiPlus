@@ -1,0 +1,17 @@
+<title> Editar solicitudes </title>
+<link rel="stylesheet" href="/css/usuario.css">
+<link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+
+
+<body>
+    <form action="/ticket/edit/{{ticketId._id}}?_method=put" method="post">
+    <input type="hidden" name="_method" value="put">
+
+    <input type="text" value="{{ticketId.titulo}}" name="titulo">
+    <textarea type="text" name="descripcion">{{ticketId.descripcion}}</textarea>
+    <input type="text" value="{{ticketId.estado}}" name="estado">
+
+    
+    <button type="submit">Editar</button>
+</form>
+</body>

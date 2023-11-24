@@ -1,0 +1,74 @@
+<title> Mis solicitudes </title>
+<link rel="stylesheet" href="/css/usuario.css">
+<link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+
+<body>
+    <div class="sidebar">
+        <div class="logo-details">
+            <i class="fa-solid fa-strikethrough icon"></i>
+                <div class="logo_name">ServiPlus</div>
+                <i class='bx bx-menu' id="btn"></i>
+        </div>
+        <ul class="nav-list">
+            <li>
+                <a href="/ticket/index">
+                    <i class="fa-regular fa-calendar"></i>
+                    <span class="links_name">Solicitudes</span>
+                </a>
+                <span class="tooltip">Solicitudes</span>
+            </li>
+
+            <li>
+                <a href="#">
+                    <i class="fa-solid fa-gear"></i>
+                    <span class="links_name">Configuraciones</span>
+                </a>
+                <span class="tooltip">Configuraciones</span>
+            </li>
+            <li class="profile">
+                <div class="profile-details">
+                    <img src="profile.jpg" alt="profileImg">
+                    <div class="name_job">
+                        <div class="name">Prem Shahi</div>
+                        <div class="job">Web designer</div>
+                    </div>
+                </div>
+                <i class="fa-solid fa-right-from-bracket" id="log_out"></i>
+            </li>
+        </ul>
+    </div>
+    <section class="home-section">
+        <div class="loader_bg">
+            <div class="leap-frog">
+                <div class="leap-frog__dot"></div>
+                <div class="leap-frog__dot"></div>
+                <div class="leap-frog__dot"></div>
+            </div>
+        </div>
+        <i class="fa-solid fa-arrow-left"></i><a href="/ticket/index"> Volver atras</a>
+        <h1 class="text1">Solicitudes enviadas:</h1>
+
+        <div class="tarjetas">
+            {{#each solicitudes}}
+            {{!-- aqui podemos poner una tarjeta: --}}
+            <div class="cardBox">
+                <div class="card1">
+                    <div class="h4">{{titulo}}</div>
+
+                    <div class="content1">
+                        <div class="h3">{{estado}}</div>
+                        <p>{{descripcion}}</p>
+                    </div>
+                </div>
+            </div>
+
+            {{/each}}
+        </div>
+
+    </section>
+
+    <script src="/js/usuario.js"></script>
+    
+</body>
+
+</html>

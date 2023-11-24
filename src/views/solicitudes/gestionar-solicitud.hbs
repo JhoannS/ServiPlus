@@ -1,0 +1,146 @@
+<title> Gestionar solicitudes </title>
+<link rel="stylesheet" href="/css/usuario.css">
+<link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+
+<body>
+    <div class="sidebar">
+        <div class="logo-details">
+            <i class="fa-solid fa-strikethrough icon"></i>
+                <div class="logo_name">ServiPlus</div>
+                <i class='bx bx-menu' id="btn"></i>
+        </div>
+        <ul class="nav-list">
+            <li>
+                <a href="/ticket/index">
+                    <i class="fa-regular fa-calendar"></i>
+                    <span class="links_name">Solicitudes</span>
+                </a>
+                <span class="tooltip">Solicitudes</span>
+            </li>
+
+            <li>
+                <a href="#">
+                    <i class="fa-solid fa-gear"></i>
+                    <span class="links_name">Configuraciones</span>
+                </a>
+                <span class="tooltip">Configuraciones</span>
+            </li>
+            <li class="profile">
+                <div class="profile-details">
+                    <img src="profile.jpg" alt="profileImg">
+                    <div class="name_job">
+                        <div class="name">Prem Shahi</div>
+                        <div class="job">Web designer</div>
+                    </div>
+                </div>
+                <i class="fa-solid fa-right-from-bracket" id="log_out"></i>
+            </li>
+        </ul>
+    </div>
+    <section class="home-section">
+        <div class="loader_bg">
+            <div class="leap-frog">
+                <div class="leap-frog__dot"></div>
+                <div class="leap-frog__dot"></div>
+                <div class="leap-frog__dot"></div>
+            </div>
+        </div>
+        <i class="fa-solid fa-arrow-left"></i><a href="/ticket/index"> Volver atras</a>
+        <h1 class="text1">Acciones de solicitud:</h1>
+
+        <div class="tarjetas">
+            {{#each solicitudes}}
+            {{!-- aqui podemos poner una tarjeta: --}}
+            <div class="cardBox">
+                <div class="card1">
+                    <div class="h4">{{titulo}}</div>
+
+                    <div class="content1">
+                        <div class="h3">{{estado}}</div>
+                        <p>{{descripcion}}</p>
+
+                        <div class="opciones">
+                            <a href="/ticket/edit/{{_id}}">
+                                <i class="fa-solid fa-marker" ></i>
+                            </a>
+
+                            <form action="/ticket/delete/{{_id}}?_method=delete" method="post">
+                                <input type="hidden" name="_method" value="delete">
+                                <button type="submit"><i class="fa-solid fa-trash" style="color: red; background-color:transparent"></i></button>
+
+                            </form>
+
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+            {{/each}}
+
+
+            <button class="Btn" id="open">
+                <div class="sign">
+                    <i class="fa-solid fa-plus"></i>
+                </div>
+                <div class="text" id="open">Nueva</div>
+            </button>
+
+        </div>
+        <div class="notificacion">
+            <p>{{>mensaje_correcto}} <i class="fa-solid fa-circle-check" style="color: #40983a;"></i></p>
+            <span class="notificacion_progreso"></span>
+        </div>
+        
+
+        {{!-- modal de añadir --}}
+        <div id="modal_container" class="modal-container">
+            <div class="modal">
+                <form class="form" method="POST" action="/ticket/nueva-solicitud">
+
+                    <p class="title">Nueva solicitud</p>
+                    <p class="message">Registra una nueva solicitud, recuerda llenar todos los campos para que sea
+                        enviada correctamente</p>
+                    <div class="flex">
+                        <label>
+                            <span>Titulo</span>
+                            <input placeholder="" type="text" class="input" name="titulo">
+                        </label>
+
+
+                    </div>
+
+                    <label>
+                        <span>descripcion</span>
+                        <textarea type="text" class="input" name="descripcion"></textarea>
+                    </label>
+
+                    <div class="botones-form">
+                        <span class="cancelar" id="close">Cancelar</span>
+                        <button class="crear" name="crear">Crear</button>
+                </form>
+            </div>
+        </div>
+
+    </section>
+
+    <script src="/js/usuario.js"></script>
+    <script>
+        //crear
+        const open = document.getElementById('open');
+        const modal_container = document.getElementById('modal_container');
+        const close = document.getElementById('close');
+
+        open.addEventListener('click', () => {
+            modal_container.classList.add('show');
+        });
+
+        close.addEventListener('click', () => {
+            modal_container.classList.remove('show');
+        });
+
+    </script>
+</body>
+
+</html>
